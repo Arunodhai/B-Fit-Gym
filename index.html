@@ -339,8 +339,454 @@
     .cta-inner { flex-direction: column; padding: 60px 28px; }
     #cta { padding: 0 24px 80px; }
     footer { padding: 60px 24px 30px; }
-
   }
+
+  /* Hide mobile-only elements on desktop */
+  .mob-menu-btn { display: none; }
+  .mob-nav-drawer { display: none; }
+
+  @media (max-width: 1024px) {
+    .mob-menu-btn { display: flex; }
+    .mob-nav-drawer { display: flex; top: 80px; }
+  }
+
+  @media (max-width: 480px) {
+    .mob-menu-btn { display: flex; }
+    .mob-nav-drawer { display: flex; }
+  }
+
+  /* ============================================================
+     MOBILE STYLES — max-width: 480px
+     Does NOT affect desktop. Touch-optimised, polished.
+  ============================================================ */
+  @media (max-width: 480px) {
+
+    /* --- Custom cursor: hide on touch --- */
+    .cursor-dot, .cursor-ring { display: none !important; }
+    body { cursor: auto; }
+    a, button { cursor: pointer; }
+
+    /* --- NAV --- */
+    nav {
+      padding: 0 18px;
+      height: 64px;
+    }
+    .nav-logo img { height: 40px; }
+    .nav-logo-text { font-size: 13px; letter-spacing: 1px; }
+    .nav-logo-tag { font-size: 9px; letter-spacing: 1.5px; }
+    .nav-links { display: none; }
+
+    /* Hamburger button */
+    .mob-menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 8px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .mob-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--white);
+      transition: all 0.28s ease;
+      transform-origin: center;
+    }
+    .mob-menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .mob-menu-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .mob-menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mob-nav-drawer {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8,8,8,0.97);
+      backdrop-filter: blur(18px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 28px 48px;
+      transform: translateX(100%);
+      transition: transform 0.38s cubic-bezier(0.77,0,0.18,1);
+      overflow-y: auto;
+    }
+    .mob-nav-drawer.open { transform: translateX(0); }
+    .mob-nav-drawer ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+    .mob-nav-drawer ul li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mob-nav-drawer ul li a {
+      display: block;
+      padding: 18px 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .mob-nav-drawer ul li a:hover { color: var(--orange); padding-left: 8px; }
+    .mob-nav-drawer-cta {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .mob-nav-drawer-cta .btn-primary {
+      display: flex;
+      justify-content: center;
+      padding: 18px 24px;
+      font-size: 14px;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .mob-nav-drawer-phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    /* --- HERO --- */
+    #hero { height: 100svh; min-height: 540px; }
+    .hero-content {
+      padding: 80px 20px 180px;
+      max-width: 100%;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      margin-bottom: 16px;
+    }
+    .hero-eyebrow::before { width: 24px; }
+    .hero-title {
+      font-size: clamp(58px, 16vw, 80px);
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 100%;
+    }
+    .hero-actions {
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .btn-primary {
+      padding: 15px 28px;
+      font-size: 13px;
+      width: 100%;
+      justify-content: center;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .btn-ghost {
+      font-size: 13px;
+      padding: 12px 0;
+    }
+
+    /* Stats bar — stacked 2×2 inside hero */
+    .hero-stats {
+      position: absolute;
+      bottom: 52px;
+      left: 0; right: 0;
+      margin: 0;
+      flex-wrap: wrap;
+      background: rgba(10,10,10,0.72);
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+    .hero-stat {
+      min-width: 50%;
+      max-width: 50%;
+      padding: 14px 18px;
+      flex: 0 0 50%;
+    }
+    .hero-stat:nth-child(2) { border-right: none; }
+    .stat-num { font-size: 34px; }
+    .stat-label { font-size: 9px; letter-spacing: 1.5px; }
+
+    /* Marquee */
+    .hero-marquee { bottom: 0; }
+    .marquee-section { padding: 12px 0; }
+    .marquee-item { font-size: 14px; letter-spacing: 2px; padding: 0 24px; gap: 14px; }
+
+    /* --- ABOUT --- */
+    #about { padding: 64px 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
+    .about-img-stack { padding-bottom: 0; padding-right: 0; }
+    .about-img-main { height: 280px; }
+    .about-img-float { display: none; }
+    .about-badge {
+      top: 18px;
+      left: -4px;
+      padding: 10px 16px;
+    }
+    .about-badge .big { font-size: 28px; }
+    .about-badge .sm { font-size: 9px; }
+    .about-text { padding: 0; }
+    .section-title {
+      font-size: clamp(40px, 12vw, 58px) !important;
+      white-space: normal !important;
+    }
+    .section-body { font-size: 14px; }
+    .about-quote-block p { font-size: 18px; }
+    .about-text p { font-size: 14px; }
+    .badges { gap: 8px; }
+    .badge { font-size: 10px; padding: 7px 12px; }
+
+    /* --- PHOTO STRIP --- */
+    .photo-strip {
+      grid-template-columns: 1fr 1fr;
+      height: auto;
+      gap: 2px;
+    }
+    .strip-img { height: 160px; }
+    .strip-label { font-size: 10px; letter-spacing: 1.2px; padding: 12px 10px; }
+
+    /* --- SERVICES --- */
+    #services { padding: 64px 0; }
+    .services-header {
+      padding: 0 20px;
+      margin-bottom: 40px;
+    }
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+    .service-card { min-height: 300px; }
+    .service-content { padding: 24px 24px 28px; }
+    .service-name { font-size: 20px; }
+    .service-desc { font-size: 13px; max-width: 100%; }
+    /* Always show link on mobile (no hover) */
+    .service-link { opacity: 1; transform: translateX(0); }
+
+    /* --- MEMBERSHIP --- */
+    #membership { padding: 64px 16px; }
+    .membership-header { margin-bottom: 36px; }
+    .plans-wrap { border-radius: 0; }
+
+    /* Membership cards — card-style per plan */
+    .plan-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 20px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+    .plan-row:last-child { border-bottom: none; }
+
+    .plan-name { font-size: 20px; letter-spacing: 0.5px; }
+    .plan-sub { font-size: 11px; margin-top: 1px; }
+
+    /* Price row — old & new side by side */
+    .plan-prices-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 8px 0 4px;
+      flex-wrap: wrap;
+    }
+    .plan-old { font-size: 22px; text-decoration: line-through; }
+    .plan-new { font-size: 32px; }
+    .plan-off {
+      font-size: 14px;
+      padding: 5px 10px;
+      margin-bottom: 4px;
+      align-self: flex-start;
+    }
+    .plan-select {
+      margin-top: 12px;
+      display: block;
+      text-align: center;
+      padding: 13px 18px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      width: 100%;
+      border: 1px solid rgba(255,90,0,0.6);
+      background: rgba(255,90,0,0.12);
+      color: var(--orange);
+    }
+    .membership-actions { justify-content: center; margin-top: 28px; }
+    .membership-actions .btn-primary { width: 100%; justify-content: center; }
+    .membership-note { font-size: 11px; padding: 0 4px; margin-top: 12px; }
+
+    /* --- PROGRAMS --- */
+    #programs { padding: 64px 16px; }
+    .programs-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .programs-header .btn-primary { width: 100%; justify-content: center; }
+    .programs-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .program-card-img { height: 300px; }
+    .program-content { padding: 28px 24px; }
+    .program-title { font-size: 24px; }
+    .program-desc { font-size: 13px; max-width: 100%; }
+
+    /* --- EXPERIENCE --- */
+    #experience { padding: 64px 16px; }
+    .exp-top { margin-bottom: 40px; }
+    .experience-layout {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .exp-img-grid {
+      height: auto;
+      grid-template-rows: 160px 160px;
+    }
+    .exp-right { gap: 0; }
+    .exp-feature { padding: 16px 0; gap: 14px; }
+    .exp-feature:hover { padding-left: 0; } /* no hover effect on touch */
+    .exp-feature-icon { width: 38px; height: 38px; flex-shrink: 0; }
+    .exp-feature-text h3 { font-size: 14px; }
+    .exp-feature-text p { font-size: 12px; }
+    .hours-strip {
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px 20px;
+    }
+    .hours-divider { display: none; }
+    .hours-strip-group { min-width: unset; width: 100%; }
+    .access-pill { font-size: 10px; }
+    .exp-cell-badge .big { font-size: 24px; }
+    .exp-cell-badge .sm { font-size: 8px; }
+    .exp-cell-badge { padding: 8px 12px; bottom: 10px; left: 10px; }
+
+    /* --- TESTIMONIALS --- */
+    #testimonials { padding: 64px 16px; }
+    #testimonials::before { font-size: 200px; top: 10px; left: 0; }
+    .testimonials-header { margin-bottom: 40px; }
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .testimonial-card {
+      padding: 24px 20px;
+      transform: none !important; /* disable hover lift on touch */
+    }
+    .testimonial-text { font-size: 13px; }
+    .testimonial-name { font-size: 13px; }
+    .testimonial-meta { font-size: 10px; }
+
+    /* --- JOIN FORM --- */
+    #join-form { padding: 0; align-items: flex-end; }
+    .join-form-wrap {
+      border-radius: 0;
+      border-left: none;
+      border-top: 4px solid var(--orange);
+      padding: 28px 18px 40px;
+      max-height: 92svh;
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .join-header h3 { font-size: clamp(32px, 10vw, 48px); }
+    .join-header p { font-size: 13px; }
+    .join-grid { grid-template-columns: 1fr; gap: 12px; }
+    .join-field.full { grid-column: 1; }
+    .join-field input,
+    .join-field select {
+      padding: 13px 12px;
+      font-size: 16px; /* prevents iOS zoom */
+    }
+    .join-field label { font-size: 11px; }
+    .join-submit-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+    .join-submit-row .btn-primary {
+      width: 100%;
+      justify-content: center;
+      padding: 17px 24px;
+    }
+    .join-note { font-size: 11px; text-align: center; }
+    .join-close {
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      font-size: 20px;
+    }
+
+    /* --- CTA --- */
+    #cta { padding: 0 14px 60px; }
+    .cta-block {
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+    }
+    .cta-inner {
+      flex-direction: column;
+      padding: 52px 24px 48px;
+      gap: 32px;
+      text-align: center;
+    }
+    .cta-text h2 { font-size: clamp(42px, 12vw, 64px); }
+    .cta-text p { font-size: 14px; }
+    .cta-actions { width: 100%; gap: 12px; }
+    .btn-white {
+      width: 100%;
+      justify-content: center;
+      padding: 17px 24px;
+      font-size: 14px;
+    }
+    .cta-phone { font-size: 17px; }
+
+    /* --- FOOTER --- */
+    footer { padding: 52px 18px 32px; }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+    .footer-logo { font-size: 26px; letter-spacing: 3px; }
+    .footer-tagline { font-size: 13px; max-width: 100%; }
+    .footer-col h4 { font-size: 11px; letter-spacing: 2.5px; margin-bottom: 14px; }
+    .footer-links a { font-size: 13px; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .footer-bottom p { font-size: 11px; }
+    .footer-bottom-links { gap: 16px; flex-wrap: wrap; }
+    .footer-bottom-links a { font-size: 11px; }
+
+    /* Section headers */
+    .section-label { font-size: 10px; letter-spacing: 3px; margin-bottom: 14px; }
+    .services-header .section-label,
+    .membership-header .section-label,
+    .testimonials-header .section-label,
+    .exp-top .section-label { justify-content: center; }
+
+  } /* end @media 480px */
 </style>
 </head>
 <body>
@@ -360,7 +806,29 @@
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#" class="nav-cta open-join-form">Join Now</a></li>
   </ul>
+  <button class="mob-menu-btn" id="mobMenuBtn" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mob-nav-drawer" id="mobNavDrawer" aria-hidden="true">
+  <ul>
+    <li><a href="#about" class="mob-nav-link">About</a></li>
+    <li><a href="#services" class="mob-nav-link">Services</a></li>
+    <li><a href="#membership" class="mob-nav-link">Plans</a></li>
+    <li><a href="#programs" class="mob-nav-link">Programs</a></li>
+    <li><a href="#experience" class="mob-nav-link">Why Us</a></li>
+    <li><a href="#testimonials" class="mob-nav-link">Reviews</a></li>
+  </ul>
+  <div class="mob-nav-drawer-cta">
+    <a href="#" class="btn-primary open-join-form mob-nav-link"><span>Join Now</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+    <a href="tel:+918714004454" class="mob-drawer-phone mob-nav-link" style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.6);font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;letter-spacing:1px;text-decoration:none;margin-top:4px;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3L5 2C5.5 3.5 6 5 6 5.5C5.5 6 5 6.5 5.5 7.5C6 8.5 7 9.5 8 10C9 10.5 9.5 10 10 9.5C10.5 9 12 9.5 13.5 10L12.5 12C10.5 13 7.5 12.5 5 10C2.5 7.5 2 4.5 3 3Z" fill="#FF5A00"/></svg>
+      +91 87140 04454
+    </a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -903,6 +1371,22 @@
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && joinModal.classList.contains('open')) closeJoinModal();
+  });
+
+  // Mobile hamburger menu
+  const mobMenuBtn = document.getElementById('mobMenuBtn');
+  const mobNavDrawer = document.getElementById('mobNavDrawer');
+  const toggleMobMenu = (force) => {
+    const isOpen = force !== undefined ? force : !mobMenuBtn.classList.contains('open');
+    mobMenuBtn.classList.toggle('open', isOpen);
+    mobNavDrawer.classList.toggle('open', isOpen);
+    mobMenuBtn.setAttribute('aria-expanded', isOpen);
+    mobNavDrawer.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  mobMenuBtn.addEventListener('click', () => toggleMobMenu());
+  document.querySelectorAll('.mob-nav-link').forEach(link => {
+    link.addEventListener('click', () => toggleMobMenu(false));
   });
 
   const leadForm = document.getElementById('leadForm');
