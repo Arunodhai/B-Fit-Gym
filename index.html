@@ -47,10 +47,18 @@
 
   /* HERO */
   #hero { height: 100svh; min-height: 100svh; position: relative; display: flex; align-items: center; overflow: hidden; }
-  .hero-bg-img, .hero-bg-img-2 { position: absolute; inset: 0; background-position: center 24%; background-size: cover; background-repeat: no-repeat; filter: brightness(0.5) saturate(0.95) contrast(1.08); z-index: 0; transform: scale(1.03) scaleX(-1); }
-  .hero-bg-img { background-image: url('./hero.png'); animation: slowZoom 18s ease-in-out infinite alternate, heroFadeOne 12s ease-in-out infinite; }
-  .hero-bg-img-2 { background-image: url('./box.webp'); animation: slowZoom 18s ease-in-out infinite alternate, heroFadeTwo 12s ease-in-out infinite; opacity: 0; }
-  @keyframes slowZoom { from { transform: scale(1.05) scaleX(-1); } to { transform: scale(1.0) scaleX(-1); } }
+  .hero-bg-img, .hero-bg-img-2 { position: absolute; inset: 0; background-position: center 24%; background-size: 120%; background-repeat: no-repeat; filter: brightness(0.5) saturate(0.95) contrast(1.08); z-index: 0; }
+  .hero-bg-img { background-image: url('./hero.png'); animation: heroPanOne 18s ease-in-out infinite alternate, heroFadeOne 12s ease-in-out infinite; }
+  .hero-bg-img-2 { background-image: url('./box.webp'); animation: heroPanTwo 18s ease-in-out infinite alternate, heroFadeTwo 12s ease-in-out infinite; opacity: 0; }
+  /* Pan right→left with subtle zoom. scaleX(-1) removed so pan direction is intuitive */
+  @keyframes heroPanOne {
+    0%   { background-position: 80% 24%; background-size: 122%; }
+    100% { background-position: 20% 24%; background-size: 115%; }
+  }
+  @keyframes heroPanTwo {
+    0%   { background-position: 75% 30%; background-size: 120%; }
+    100% { background-position: 25% 30%; background-size: 113%; }
+  }
   @keyframes heroFadeOne { 0%, 46% { opacity: 1; } 54%, 96% { opacity: 0; } 100% { opacity: 1; } }
   @keyframes heroFadeTwo { 0%, 46% { opacity: 0; } 54%, 96% { opacity: 1; } 100% { opacity: 0; } }
   .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,90,0,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,90,0,0.08) 1px, transparent 1px); background-size: 70px 70px; animation: gridMove 26s linear infinite; z-index: 1; opacity: 0.32; }
@@ -75,6 +83,8 @@
   .hero-stats { position: absolute; bottom: 34px; left: 60px; right: 60px; z-index: 5; display: flex; background: rgba(10,10,10,0.58); border: 1px solid rgba(255,255,255,0.13); backdrop-filter: blur(8px); box-shadow: 0 14px 34px rgba(0,0,0,0.35); }
   .hero-stat { flex: 1; padding: 20px 32px; border-right: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; gap: 16px; }
   .hero-stat:last-child { border-right: none; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; color: var(--orange); }
+  .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.8); line-height: 1.4; }
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; color: var(--orange); }
   .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.8); line-height: 1.4; }
 
@@ -316,8 +326,8 @@
     #about, #services, #membership, #programs, #experience, #testimonials, #cta { padding: 80px 24px; }
     #hero { height: 100svh; min-height: 100svh; padding: 0; }
     .hero-bg-img, .hero-bg-img-2 { background-position: center; }
-    .hero-content { padding: 94px 22px 96px; max-width: 100%; }
-    .hero-stats { position: static; flex-wrap: wrap; margin-top: 20px; left: auto; right: auto; background: rgba(10,10,10,0.7); }
+    .hero-content { padding: 94px 22px 130px; max-width: 100%; }
+    .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; flex-wrap: wrap; background: rgba(10,10,10,0.7); border-left: none; border-right: none; }
     .hero-stat { min-width: 50%; }
     .about-grid, .experience-layout { grid-template-columns: 1fr; gap: 40px; }
     .exp-img-grid { height: 360px; }
@@ -467,34 +477,54 @@
     }
 
     /* --- HERO --- */
-    #hero { height: 100svh; min-height: 540px; }
+    #hero { height: 100svh; min-height: 600px; display: flex; flex-direction: column; }
+
+    /* BG pan on mobile — keep the same feel, slightly tighter range */
+    .hero-bg-img { animation: heroPanOneMob 20s ease-in-out infinite alternate, heroFadeOne 12s ease-in-out infinite; }
+    .hero-bg-img-2 { animation: heroPanTwoMob 20s ease-in-out infinite alternate, heroFadeTwo 12s ease-in-out infinite; }
+    @keyframes heroPanOneMob {
+      0%   { background-position: 75% 20%; background-size: 200%; }
+      100% { background-position: 30% 20%; background-size: 190%; }
+    }
+    @keyframes heroPanTwoMob {
+      0%   { background-position: 70% 25%; background-size: 195%; }
+      100% { background-position: 28% 25%; background-size: 185%; }
+    }
+
+    /* Content fills remaining height with flex */
     .hero-content {
-      padding: 80px 20px 180px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 90px 22px 20px;
       max-width: 100%;
     }
     .hero-eyebrow {
       font-size: 10px;
       letter-spacing: 2.5px;
-      margin-bottom: 16px;
-    }
-    .hero-eyebrow::before { width: 24px; }
-    .hero-title {
-      font-size: clamp(58px, 16vw, 80px);
       margin-bottom: 18px;
+    }
+    .hero-eyebrow::before { width: 22px; }
+    .hero-title {
+      font-size: clamp(60px, 17vw, 82px);
+      line-height: 0.88;
+      margin-bottom: 20px;
     }
     .hero-sub {
       font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: 32px;
+      line-height: 1.65;
+      margin-bottom: 30px;
       max-width: 100%;
+      color: rgba(215,215,215,0.88);
     }
     .hero-actions {
       flex-direction: column;
-      gap: 14px;
-      align-items: flex-start;
+      gap: 12px;
+      align-items: stretch;
     }
     .btn-primary {
-      padding: 15px 28px;
+      padding: 16px 28px;
       font-size: 13px;
       width: 100%;
       justify-content: center;
@@ -503,34 +533,41 @@
     .btn-ghost {
       font-size: 13px;
       padding: 12px 0;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255,255,255,0.22);
     }
 
-    /* Stats bar — stacked 2×2 inside hero */
+    /* Stats — pinned above marquee, perfectly split 2×2 */
     .hero-stats {
-      position: absolute;
-      bottom: 52px;
-      left: 0; right: 0;
+      position: relative;
+      bottom: auto; left: auto; right: auto;
       margin: 0;
       flex-wrap: wrap;
-      background: rgba(10,10,10,0.72);
+      background: rgba(8,8,8,0.75);
       border-left: none;
       border-right: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: none;
       border-radius: 0;
+      backdrop-filter: blur(10px);
+      box-shadow: none;
     }
     .hero-stat {
-      min-width: 50%;
-      max-width: 50%;
-      padding: 14px 18px;
       flex: 0 0 50%;
+      max-width: 50%;
+      padding: 14px 20px;
+      gap: 12px;
     }
-    .hero-stat:nth-child(2) { border-right: none; }
-    .stat-num { font-size: 34px; }
-    .stat-label { font-size: 9px; letter-spacing: 1.5px; }
+    .hero-stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.1); }
+    .hero-stat:nth-child(1),
+    .hero-stat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .stat-num { font-size: 32px; }
+    .stat-label { font-size: 9px; letter-spacing: 1.4px; line-height: 1.5; }
 
     /* Marquee */
-    .hero-marquee { bottom: 0; }
-    .marquee-section { padding: 12px 0; }
-    .marquee-item { font-size: 14px; letter-spacing: 2px; padding: 0 24px; gap: 14px; }
+    .hero-marquee { position: relative; bottom: auto; }
+    .marquee-section { padding: 11px 0; }
+    .marquee-item { font-size: 13px; letter-spacing: 2px; padding: 0 22px; gap: 12px; }
 
     /* --- ABOUT --- */
     #about { padding: 64px 20px; }
@@ -843,6 +880,24 @@
     <div class="hero-actions">
       <a href="#" class="btn-primary open-join-form"><span>Start Training</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></a>
       <a href="#services" class="btn-ghost">Explore Services →</a>
+    </div>
+  </div>
+  <div class="hero-stats" id="heroStats">
+    <div class="hero-stat">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Active<br>Members</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">5★</div>
+      <div class="stat-label">Google<br>Rating</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Expert<br>Trainers</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">AC</div>
+      <div class="stat-label">Premium<br>Facility</div>
     </div>
   </div>
   <div class="hero-marquee marquee-section">
