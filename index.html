@@ -47,24 +47,19 @@
 
   /* HERO */
   #hero { height: 100svh; min-height: 100svh; position: relative; display: flex; align-items: center; overflow: hidden; }
-  .hero-bg-img, .hero-bg-img-2 { position: absolute; inset: 0; background-position: center 24%; background-size: 120%; background-repeat: no-repeat; filter: brightness(0.5) saturate(0.95) contrast(1.08); z-index: 0; }
-  .hero-bg-img { background-image: url('./hero.png'); animation: heroPanOne 18s ease-in-out infinite alternate, heroFadeOne 12s ease-in-out infinite; }
-  .hero-bg-img-2 { background-image: url('./box.webp'); animation: heroPanTwo 18s ease-in-out infinite alternate, heroFadeTwo 12s ease-in-out infinite; opacity: 0; }
-  /* Pan right→left with subtle zoom. scaleX(-1) removed so pan direction is intuitive */
-  @keyframes heroPanOne {
-    0%   { background-position: 80% 24%; background-size: 122%; }
-    100% { background-position: 20% 24%; background-size: 115%; }
-  }
-  @keyframes heroPanTwo {
-    0%   { background-position: 75% 30%; background-size: 120%; }
-    100% { background-position: 25% 30%; background-size: 113%; }
+  .hero-bg-img, .hero-bg-img-2 { position: absolute; inset: 0; background-position: center 24%; background-size: 120%; background-repeat: no-repeat; filter: brightness(0.5) saturate(0.95) contrast(1.08); z-index: 0; transform: scaleX(-1); }
+  .hero-bg-img { background-image: url('./int2.jpg'); animation: slowZoom 18s ease-in-out infinite alternate, heroFadeOne 12s ease-in-out infinite; }
+  .hero-bg-img-2 { background-image: url('./box.webp'); animation: slowZoom 18s ease-in-out infinite alternate, heroFadeTwo 12s ease-in-out infinite; opacity: 0; }
+  @keyframes slowZoom {
+    0%   { background-size: 122%; }
+    100% { background-size: 115%; }
   }
   @keyframes heroFadeOne { 0%, 46% { opacity: 1; } 54%, 96% { opacity: 0; } 100% { opacity: 1; } }
   @keyframes heroFadeTwo { 0%, 46% { opacity: 0; } 54%, 96% { opacity: 1; } 100% { opacity: 0; } }
   .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,90,0,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,90,0,0.08) 1px, transparent 1px); background-size: 70px 70px; animation: gridMove 26s linear infinite; z-index: 1; opacity: 0.32; }
   @keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(60px); } }
   .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(8,8,8,0.9) 8%, rgba(8,8,8,0.62) 44%, rgba(8,8,8,0.22) 72%, rgba(8,8,8,0.48) 100%), radial-gradient(circle at 78% 28%, rgba(255,90,0,0.2) 0%, rgba(255,90,0,0) 38%); z-index: 2; }
-  .hero-content { position: relative; z-index: 4; padding: 120px 60px 126px; max-width: 760px; animation: heroIn 1s ease forwards; }
+  .hero-content { position: relative; z-index: 4; padding: 120px 60px 230px; max-width: 760px; animation: heroIn 1s ease forwards; }
   @keyframes heroIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
   .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 24px; }
   .hero-eyebrow::before { content: ''; width: 40px; height: 2px; background: var(--orange); }
@@ -80,7 +75,7 @@
   .btn-primary:hover svg { transform: translateX(5px); }
   .btn-ghost { display: inline-flex; align-items: center; gap: 10px; color: var(--white); padding: 16px 0; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); transition: all 0.3s; }
   .btn-ghost:hover { color: var(--orange); border-color: var(--orange); }
-  .hero-stats { position: absolute; bottom: 34px; left: 60px; right: 60px; z-index: 5; display: flex; background: rgba(10,10,10,0.58); border: 1px solid rgba(255,255,255,0.13); backdrop-filter: blur(8px); box-shadow: 0 14px 34px rgba(0,0,0,0.35); }
+  .hero-stats { position: absolute; bottom: 74px; left: 60px; right: 60px; z-index: 5; display: flex; background: rgba(10,10,10,0.58); border: 1px solid rgba(255,255,255,0.13); backdrop-filter: blur(8px); box-shadow: 0 14px 34px rgba(0,0,0,0.35); }
   .hero-stat { flex: 1; padding: 20px 32px; border-right: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; gap: 16px; }
   .hero-stat:last-child { border-right: none; }
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; color: var(--orange); }
@@ -325,7 +320,7 @@
     .nav-links { display: none; }
     #about, #services, #membership, #programs, #experience, #testimonials, #cta { padding: 80px 24px; }
     #hero { height: 100svh; min-height: 100svh; padding: 0; }
-    .hero-bg-img { background-image: url('./mob.png'); background-position: center; animation: none; transform: scale(1) scaleX(-1); }
+    .hero-bg-img { background-image: url('./mob.png'); background-position: center; animation: none; transform: scaleX(1); }
     .hero-bg-img-2 { display: none; animation: none; }
     .hero-content { padding: 94px 22px 130px; max-width: 100%; }
     .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; flex-wrap: wrap; background: rgba(10,10,10,0.7); border-left: none; border-right: none; }
@@ -480,16 +475,19 @@
     /* --- HERO --- */
     #hero { height: 100svh; min-height: 600px; display: flex; flex-direction: column; }
 
-    /* BG pan on mobile — keep the same feel, slightly tighter range */
-    .hero-bg-img { animation: heroPanOneMob 20s ease-in-out infinite alternate, heroFadeOne 12s ease-in-out infinite; }
-    .hero-bg-img-2 { animation: heroPanTwoMob 20s ease-in-out infinite alternate, heroFadeTwo 12s ease-in-out infinite; }
-    @keyframes heroPanOneMob {
-      0%   { background-position: 75% 20%; background-size: 200%; }
-      100% { background-position: 30% 20%; background-size: 190%; }
+    /* Single static mobile hero image (no fade/pan), flipped horizontally */
+    .hero-bg-img {
+      background-image: url('./mob.png');
+      background-position: center 20%;
+      background-size: cover;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: scaleX(-1);
     }
-    @keyframes heroPanTwoMob {
-      0%   { background-position: 70% 25%; background-size: 195%; }
-      100% { background-position: 28% 25%; background-size: 185%; }
+    .hero-bg-img-2 {
+      display: none !important;
+      animation: none !important;
+      opacity: 0 !important;
     }
 
     /* Content fills remaining height with flex */
