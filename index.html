@@ -345,8 +345,6 @@
     .hero-stats { position: relative; bottom: auto; left: auto; right: auto; flex-wrap: wrap; background: rgba(10,10,10,0.85); border-left: none; border-right: none; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: none; min-height: auto; }
     .hero-marquee-mobile { display: flex; position: relative; bottom: auto; left: auto; right: auto; z-index: 6; padding: 0; }
     .hero-stat { min-width: 50%; padding: 12px 18px; }
-    .stat-num { font-size: 30px; }
-    .stat-label { font-size: 9px; }
     .about-grid, .experience-layout { grid-template-columns: 1fr; gap: 40px; }
     .exp-img-grid { height: 360px; }
     .exp-right { height: auto; gap: 20px; }
@@ -512,30 +510,30 @@
       opacity: 0 !important;
     }
 
-    /* Content fills remaining height with flex */
+    /* Content fills remaining height with flex — evenly spaced */
     .hero-content {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 72px 22px 16px;
+      justify-content: space-evenly;
+      padding: 80px 22px 16px;
       max-width: 100%;
     }
     .hero-eyebrow {
       font-size: 9px;
       letter-spacing: 2px;
-      margin-bottom: 10px;
+      margin-bottom: 0;
     }
     .hero-eyebrow::before { width: 18px; }
     .hero-title {
       font-size: clamp(52px, 15vw, 72px);
       line-height: 0.88;
-      margin-bottom: 12px;
+      margin-bottom: 0;
     }
     .hero-sub {
       font-size: 13px;
       line-height: 1.55;
-      margin-bottom: 20px;
+      margin-bottom: 0;
       max-width: 100%;
       color: rgba(215,215,215,0.88);
     }
