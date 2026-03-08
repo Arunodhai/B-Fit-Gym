@@ -47,7 +47,7 @@
 
   /* HERO */
   #hero { height: 100svh; min-height: 100svh; position: relative; display: flex; align-items: center; overflow: hidden; }
-  .hero-bg-img, .hero-bg-img-2 { position: absolute; inset: 0; background-position: center 24%; background-size: 120%; background-repeat: no-repeat; filter: brightness(0.5) saturate(0.95) contrast(1.08); z-index: 0; transform: scaleX(-1); }
+  .hero-bg-img, .hero-bg-img-2 { position: absolute; inset: 0; background-position: center 24%; background-size: 120%; background-repeat: no-repeat; filter: brightness(0.5) saturate(0.95) contrast(1.08); z-index: 0; transform: scaleX(1); }
   .hero-bg-img { background-image: url('./int2.jpg'); animation: slowZoom 18s ease-in-out infinite alternate, heroFadeOne 12s ease-in-out infinite; }
   .hero-bg-img-2 { background-image: url('./box.webp'); animation: slowZoom 18s ease-in-out infinite alternate, heroFadeTwo 12s ease-in-out infinite; opacity: 0; }
   @keyframes slowZoom {
@@ -320,7 +320,7 @@
     .nav-links { display: none; }
     #about, #services, #membership, #programs, #experience, #testimonials, #cta { padding: 80px 24px; }
     #hero { height: 100svh; min-height: 100svh; padding: 0; }
-    .hero-bg-img { background-image: url('./mob.png'); background-position: center; animation: none; transform: scaleX(1); }
+    .hero-bg-img { background-image: url('./mob.png'); background-position: center; animation: none; transform: scaleX(-1); }
     .hero-bg-img-2 { display: none; animation: none; }
     .hero-content { padding: 94px 22px 130px; max-width: 100%; }
     .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; flex-wrap: wrap; background: rgba(10,10,10,0.7); border-left: none; border-right: none; }
