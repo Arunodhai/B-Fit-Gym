@@ -569,7 +569,7 @@
 
   /* FOOTER */
   footer { background: var(--black); border-top: 1px solid rgba(255,90,0,0.15); padding: 80px 60px 40px; }
-  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto 60px; }
+  .footer-grid { display: grid; grid-template-columns: 1.1fr 1.9fr; gap: 60px; max-width: 1400px; margin: 0 auto 60px; }
   .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 4px; color: var(--white); margin-bottom: 16px; display: block; }
   .footer-logo span { color: var(--orange); }
   .footer-tagline { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--gray); margin-bottom: 22px; max-width: 240px; }
@@ -587,6 +587,11 @@
   .footer-bottom-links { display: flex; gap: 24px; }
   .footer-bottom-links a { font-size: 12px; color: var(--gray); text-decoration: none; transition: color 0.3s; }
   .footer-bottom-links a:hover { color: var(--orange); }
+  .footer-map-wrap h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--white); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,90,0,0.2); }
+  .footer-map-frame { width: 100%; height: 290px; border: 1px solid rgba(255,90,0,0.25); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+  .footer-map-frame iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.08) contrast(1.02); }
+  .footer-map-link { margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--gray-light); text-decoration: none; transition: color 0.3s; }
+  .footer-map-link:hover { color: var(--orange); }
 
   @media (max-width: 1024px) {
     nav { padding: 0 24px; }
@@ -618,7 +623,7 @@
     .join-grid { grid-template-columns: 1fr; }
     .photo-strip { grid-template-columns: 1fr 1fr; height: auto; }
     .strip-img { height: 200px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     .cta-inner { flex-direction: column; padding: 60px 28px; }
     #cta { padding: 0 24px 80px; }
     footer { padding: 60px 24px 30px; }
@@ -1086,6 +1091,8 @@
     .footer-col h4 { font-size: 11px; letter-spacing: 2.5px; margin-bottom: 14px; }
     .footer-links a { font-size: 13px; }
     .footer-links li { margin-bottom: 8px; }
+    .footer-map-wrap h4 { margin-bottom: 14px; font-size: 11px; letter-spacing: 2.5px; }
+    .footer-map-frame { height: 230px; border-radius: 12px; }
     .footer-bottom {
       flex-direction: column;
       align-items: flex-start;
@@ -1646,32 +1653,18 @@
         <a href="https://www.instagram.com/bfit_healthclub/" target="_blank" rel="noopener noreferrer">@bfit_healthclub</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Academy</h4>
-      <ul class="footer-links">
-        <li><a href="#services">Gym Coaching</a></li>
-        <li><a href="#programs">Boxing Program</a></li>
-        <li><a href="#services">Personal Training</a></li>
-        <li><a href="#experience">Why B FIT</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Membership</h4>
-      <ul class="footer-links">
-        <li><a href="#membership">Monthly Plan</a></li>
-        <li><a href="#membership">Couple Package</a></li>
-        <li><a href="#membership">Family Package</a></li>
-        <li><a href="#" class="open-join-form">Join Now</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Visit & Contact</h4>
-      <ul class="footer-links">
-        <li><a href="#experience">Mon–Sat: 5AM–10AM & 4PM–10PM</a></li>
-        <li><a href="#experience">Sunday: Closed</a></li>
-        <li><a href="https://www.google.com/maps?q=3H23%2BQ7Q+B+FIT+FITNESS+CENTRE%2C+Kallelibhagom%2C+Kerala+690519" target="_blank" rel="noopener noreferrer">Get Directions</a></li>
-        <li><a href="https://wa.me/918714004454" target="_blank" rel="noopener noreferrer">WhatsApp Us</a></li>
-      </ul>
+    <div class="footer-map-wrap">
+      <h4>Find Us On Map</h4>
+      <div class="footer-map-frame">
+        <iframe
+          title="B FIT FITNESS CENTRE Location"
+          src="https://www.google.com/maps?q=3H23%2BQ7Q+B+FIT+FITNESS+CENTRE%2C+Kallelibhagom%2C+Kerala+690519&t=k&z=18&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <a class="footer-map-link" href="https://www.google.com/maps?q=3H23%2BQ7Q+B+FIT+FITNESS+CENTRE%2C+Kallelibhagom%2C+Kerala+690519" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
     </div>
   </div>
   <div class="footer-bottom">
