@@ -348,6 +348,7 @@
   .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
   .btn-primary svg { transition: transform 0.3s; }
   .btn-primary:hover svg { transform: translateX(5px); }
+  .btn-call-mobile { display: none; }
   .btn-ghost { display: inline-flex; align-items: center; gap: 10px; color: var(--white); padding: 16px 0; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); transition: all 0.3s; }
   .btn-ghost:hover { color: var(--orange); border-color: var(--orange); }
   .hero-stats { position: relative; z-index: 5; display: flex; min-height: 90px; background: rgba(10,10,10,0.72); border: 1px solid rgba(255,255,255,0.13); border-bottom: none; backdrop-filter: blur(8px); box-shadow: 0 -8px 34px rgba(0,0,0,0.35); margin: 0; }
@@ -811,6 +812,12 @@
       justify-content: center;
       clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
     }
+    .btn-call-mobile {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
     .btn-ghost {
       font-size: 13px;
       padding: 10px 0;
@@ -1165,6 +1172,7 @@
     <p class="hero-sub">Train at the biggest gym and boxing academy in Kallelibhagom, Karunagappally with premium AC comfort, professional coaching, and modern equipment.</p>
     <div class="hero-actions">
       <a href="#" class="btn-primary open-join-form"><span>Start Training</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <a href="tel:+918714004454" class="btn-primary btn-call-mobile"><span>Call Now</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.32.56 3.57.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.06 21 3 13.94 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.19 2.45.56 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#services" class="btn-ghost">Explore Services →</a>
     </div>
   </div>
