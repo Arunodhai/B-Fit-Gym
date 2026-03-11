@@ -801,14 +801,15 @@
       color: rgba(215,215,215,0.88);
     }
     .hero-actions {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 10px;
-      align-items: stretch;
+      align-items: center;
     }
     .btn-primary {
       padding: 13px 28px;
       font-size: 13px;
-      width: 100%;
+      width: calc(50% - 5px);
       justify-content: center;
       clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
     }
@@ -823,6 +824,7 @@
       padding: 10px 0;
       justify-content: center;
       border-bottom: 1px solid rgba(255,255,255,0.22);
+      width: 100%;
     }
 
     /* Stats — 2×2 grid, compact */
